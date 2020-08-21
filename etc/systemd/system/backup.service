@@ -1,0 +1,13 @@
+[Unit]
+Description=Data Backup Service
+After=network.target
+StartLimitIntervalSec=30
+
+[Service]
+Type=simple
+RestartSec=240
+User=root
+ExecStart=/root/backup_script
+
+[Install]
+WantedBy=multi-user.target
