@@ -1,0 +1,13 @@
+[Unit]
+Description=Late Night Cache & Swap Cleanup
+
+[Service]
+Type=oneshot
+User=root
+ExecStartPre=/bin/sync
+ExecStartPre=/bin/echo 3 > /proc/sys/vm/drop_caches 
+ExecStartPre=/sbin/swapoff -a
+ExecStart=/sbin/swapon -a
+
+[Install]
+WantedBy=basic.target
