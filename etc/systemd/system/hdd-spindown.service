@@ -1,0 +1,14 @@
+[Unit]
+Description=Spindown Hard Drives
+After=suspend.target
+
+[Service]
+Type=oneshot
+# Enable automatic spin down after 30 seconds for the second, infrequently used disk
+ExecStart=/sbin/hdparm -S 240 /dev/disk/by-label/System
+ExecStart=/sbin/hdparm -S 240 /dev/disk/by-label/Shared
+ExecStart=/sbin/hdparm -S 240 /dev/disk/by-label/Containers
+ExecStart=/sbin/hdparm -S 240 /dev/disk/by-label/Backups
+
+[Install]
+WantedBy=suspend.target basic.target
