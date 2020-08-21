@@ -1,0 +1,10 @@
+[Unit]
+Description=Run at 2:30 am daily
+
+[Timer]
+OnBootSec=0 m
+OnCalendar=00/6:30
+Unit=daily_cleanup.service
+
+[Install]
+WantedBy=basic.target
